@@ -68,11 +68,6 @@ const sessionOptions = {
     }
 };
 
-// app.get("/", (req, res) => {
-//     // res.send("Hello, I am root");
-//     res.redirect("/listings");
-// });
-
 app.use(session(sessionOptions));
 app.use(flash());
 
@@ -94,6 +89,10 @@ app.use((req, res, next) => {
     console.log("currUser =", res.locals.currUser);
 
     next();
+});
+
+app.get("/", (req, res) => {
+    res.redirect("/listings");
 });
 
 // app.get("/demouser", async(req, res) => {
